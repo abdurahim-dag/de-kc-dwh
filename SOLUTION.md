@@ -13,16 +13,16 @@
 
 ### ER OLTP:
 
-![](.\OLTP.png)
+![](OLTP.png)
 
 ### ER DIMENSIONAL:
 
-![](.\DIMENSIONAL.png)
+![](DIMENSIONAL.png)
 
 ### ER DV:
 
-![](.\DV.png)
+![](DV.png)
 
 ### ER ANCHOR:
 
-![](.\ANCHOR.png)
+![](ANCHOR.png)
