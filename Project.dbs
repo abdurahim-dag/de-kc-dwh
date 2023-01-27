@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<project name="KC_DWH" id="Project-1c07" database="LogicalDesign" >
+	<schema name="INSTANCE" catalogname="KC_DWH" >
+		<table name="AT_COST" prior="a_parcel_category_0" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="COST" prior="CATEGORY" type="NUMERIC" length="10" decimal="2" jt="2" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_a_parcel_category_0" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="LOAD_DT" />
+			</index>
+		</table>
+		<table name="AT_PARCEL_ADDRESS" prior="A_PARCEL_ADDRESS" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="ADDRESS" type="VARCHAR" length="200" jt="12" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_a_parcel_address" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="LOAD_DT" />
+			</index>
+		</table>
+		<table name="AT_PARCEL_AREA" prior="A_PARCEL_AREA" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="AREA" type="INT" jt="4" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_at_parcel_area" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="LOAD_DT" />
+			</index>
+		</table>
+		<table name="AT_PARCEL_CAD_NUM" prior="A_PARCEL_CAD_NUM" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="CAD_NUM" type="VARCHAR" length="10" jt="12" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_at_parcel_cad_num" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="LOAD_DT" />
+			</index>
+		</table>
+		<table name="AT_PARCEL_CATEGORY" prior="A_PARCEL_CATEGORY" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="CATEGORY" type="VARCHAR" length="100" jt="12" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_a_parcel_category" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="LOAD_DT" />
+			</index>
+		</table>
+		<table name="AT_PARCEL_TYPE_NAME" prior="A_PARCEL_TYPE_NAME" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="TYPE_NAME" type="VARCHAR" length="100" jt="12" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_at_parcel_type_name" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="LOAD_DT" />
+			</index>
+		</table>
+		<table name="AT_PARCEL_UTILIZATION" prior="A_PARCEL_UTILIZATION" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="UTILIZATION" type="VARCHAR" length="200" jt="12" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_at_parcel_utilization" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="LOAD_DT" />
+			</index>
+		</table>
+		<table name="AT_REQUEST_DATE" prior="at_request_0" >
+			<column name="REQUEST_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="REQUEST_DATE" prior="REQUEST_DATE_IN" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_at_request_0" unique="PRIMARY_KEY" >
+				<column name="REQUEST_SK" />
+				<column name="LOAD_DT" />
+			</index>
+			<fk name="fk_at_request_date_a_request" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="A_REQUEST" type="Identifying" >
+				<fk_column name="REQUEST_SK" pk="REQUEST_SK" />
+			</fk>
+		</table>
+		<table name="AT_REQUEST_REG_NUM" prior="AT_REQUEST_" >
+			<column name="REQUEST_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="REG_NUM" type="VARCHAR" length="100" jt="12" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_at_request" unique="PRIMARY_KEY" >
+				<column name="REQUEST_SK" />
+				<column name="LOAD_DT" />
+			</index>
+			<fk name="fk_at_request_reg_num_a_request" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="A_REQUEST" type="Identifying" >
+				<fk_column name="REQUEST_SK" pk="REQUEST_SK" />
+			</fk>
+		</table>
+		<table name="AT_RESPONSE_DATE" prior="at_request_date_0" >
+			<column name="RESPONSE_SK" prior="REQUEST_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="RESPONSE_DATE" prior="REQUEST_DATE" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_at_request_1" unique="PRIMARY_KEY" >
+				<column name="RESPONSE_SK" />
+				<column name="LOAD_DT" />
+			</index>
+			<fk name="fk_at_response_date_a_response" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="A_RESPONSE" type="Identifying" >
+				<fk_column name="RESPONSE_SK" pk="RESPONSE_SK" />
+			</fk>
+		</table>
+		<table name="AT_RESPONSE_FULL_NAME" prior="AT_RESPONSE_" >
+			<column name="PERSON_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="FULL_NAME" type="VARCHAR" length="100" jt="12" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_at_response_full_name" unique="PRIMARY_KEY" >
+				<column name="PERSON_SK" />
+				<column name="LOAD_DT" />
+			</index>
+		</table>
+		<table name="AT_RESPONSE_REG_NUM" prior="at_request_reg_num_0" >
+			<column name="RESPONSE_SK" prior="REQUEST_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="REG_NUM" type="VARCHAR" length="100" jt="12" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_at_request_2" unique="PRIMARY_KEY" >
+				<column name="RESPONSE_SK" />
+				<column name="LOAD_DT" />
+			</index>
+			<fk name="fk_at_response_reg_num_a_response" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="A_RESPONSE" type="Identifying" >
+				<fk_column name="RESPONSE_SK" pk="RESPONSE_SK" />
+			</fk>
+		</table>
+		<table name="AT_UPKS" prior="a_parcel_category_1" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="UPKS" prior="CATEGORY" type="NUMERIC" length="10" decimal="2" jt="2" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_a_parcel_category_1" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="LOAD_DT" />
+			</index>
+		</table>
+		<table name="A_PARCEL" prior="A" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_a_parcel" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+			</index>
+			<fk name="fk_a_parcel_at_upks" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="AT_UPKS" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_a_parcel_at_parcel_address" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="AT_PARCEL_ADDRESS" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_a_parcel_at_parcel_cad_num" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="AT_PARCEL_CAD_NUM" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_a_parcel_at_parcel_area" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="AT_PARCEL_AREA" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_a_parcel_at_parcel_type_name" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="AT_PARCEL_TYPE_NAME" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_a_parcel_at_parcel_utilization" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="AT_PARCEL_UTILIZATION" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_a_parcel_at_parcel_category" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="AT_PARCEL_CATEGORY" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_a_parcel_at_cost" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="AT_COST" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+		</table>
+		<table name="A_PERSON" prior="entity" >
+			<column name="PERSON_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_a_person" unique="PRIMARY_KEY" >
+				<column name="PERSON_SK" />
+			</index>
+			<fk name="fk_a_person_at_response_full_name" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="AT_RESPONSE_FULL_NAME" type="Identifying" >
+				<fk_column name="PERSON_SK" pk="PERSON_SK" />
+			</fk>
+		</table>
+		<table name="A_REQUEST" prior="entity" >
+			<column name="REQUEST_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_a_request" unique="PRIMARY_KEY" >
+				<column name="REQUEST_SK" />
+			</index>
+		</table>
+		<table name="A_RESPONSE" prior="a_request_0" >
+			<column name="RESPONSE_SK" prior="REQUEST_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_a_request_0" unique="PRIMARY_KEY" >
+				<column name="RESPONSE_SK" />
+			</index>
+		</table>
+		<table name="COST" prior="entity" >
+			<column name="COST_ID" prior="ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="ID_PARCEL" type="BIGINT" jt="-5" />
+			<column name="COST" type="DECIMAL" length="20" decimal="2" jt="3" />
+			<column name="UPKS" type="DECIMAL" length="10" decimal="2" jt="3" />
+			<column name="DESCRIPTION" type="TEXT" jt="-1" />
+			<index name="pk_cost" unique="PRIMARY_KEY" >
+				<column name="COST_ID" />
+			</index>
+		</table>
+		<table name="DIM_PERSON" prior="person_0" >
+			<column name="PERSON_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="PERSON_FULL_NAME" type="VARCHAR" length="200" jt="12" />
+			<index name="pk_person_0" unique="PRIMARY_KEY" >
+				<column name="PERSON_ID" />
+			</index>
+		</table>
+		<table name="DIM_REQUEST" prior="dim_response_0" >
+			<column name="REQUEST_ID" prior="RESPONSE_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="REQUEST_REG_NUM" prior="REQUEST_NUM" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="REQUEST_DATE" prior="RESPONSE_DATE" type="DATE" jt="91" />
+		</table>
+		<table name="DIM_RESPONSE" prior="FCT_ESTIMATES" >
+			<column name="RESPONSE_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="RESPONSE_REG_NUM" prior="RESPONSE_NUM" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="RESPONSE_DATE" type="DATE" jt="91" />
+		</table>
+		<table name="DIM_TYPES" prior="types_0" >
+			<column name="TYPE_CODE" prior="TYPE_ID" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="TYPE_NAME" type="VARCHAR" length="100" jt="12" />
+			<index name="pk_types_0" unique="PRIMARY_KEY" >
+				<column name="TYPE_CODE" />
+			</index>
+		</table>
+		<table name="DM_ESTIMATE" prior="FCT_ESTIMATE" >
+			<column name="PARCEL_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="PARCEL_VALID_TO_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="PARCEL_VALID_FROM_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="CAD_NUM" type="VARCHAR" length="10" jt="12" />
+			<column name="ADDRESS" type="VARCHAR" length="200" jt="12" />
+			<column name="CATEGORY" type="VARCHAR" length="100" jt="12" />
+			<column name="UTILIZATION" type="VARCHAR" length="200" jt="12" />
+			<column name="AREA" type="INT" jt="4" />
+			<column name="COST" type="DECIMAL" length="20" decimal="2" jt="3" />
+			<column name="UPKS" type="DECIMAL" length="10" decimal="2" jt="3" />
+			<column name="PERSON_FULL_NAME" type="VARCHAR" length="200" jt="12" />
+			<column name="TYPE_NAME" type="VARCHAR" length="100" jt="12" />
+			<column name="REQUEST_REG_NUM" prior="REQUEST_NUM" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="REQUEST_DATE" type="DATE" jt="91" />
+			<column name="RESPONSE_REG_NUM" prior="RESPONSE_NUM" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="RESPONSE_DATE" type="DATE" jt="91" />
+			<index name="pk_dm_estimate" unique="PRIMARY_KEY" >
+				<column name="PARCEL_ID" />
+				<column name="PARCEL_VALID_TO_DT" />
+				<column name="PARCEL_VALID_FROM_DT" />
+			</index>
+		</table>
+		<table name="FCT_ESTIMATE" prior="entity" >
+			<column name="PARCEL_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="RESPONSE_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="REQUEST_ID" type="BIGINT" jt="-5" />
+			<column name="TYPE_CODE" prior="TYPE_ID" type="VARCHAR" length="100" jt="12" />
+			<column name="PERSON_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="COST" prior="AVG_COST" type="DECIMAL" length="20" decimal="2" jt="3" />
+			<column name="UPKS" type="DECIMAL" length="10" decimal="2" jt="3" />
+			<column name="DATE" type="DATE" jt="91" />
+			<fk name="fk_fct_estimate_dim_person" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="DIM_PERSON" type="Identifying" >
+				<fk_column name="RESPONSE_ID" pk="PERSON_ID" />
+			</fk>
+			<fk name="fk_fct_estimate_dim_types" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="DIM_TYPES" type="Identifying" >
+				<fk_column name="TYPE_CODE" pk="TYPE_CODE" />
+			</fk>
+			<fk name="fk_fct_estimate_dim_response" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="DIM_RESPONSE" type="Identifying" >
+				<fk_column name="REQUEST_ID" pk="RESPONSE_ID" />
+			</fk>
+			<fk name="fk_fct_estimate_dim_parcel" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="PARCEL" type="Identifying" >
+				<fk_column name="PARCEL_ID" pk="PARCEL_ID" />
+			</fk>
+			<fk name="fk_fct_estimate_dim_request" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="DIM_REQUEST" type="Identifying" >
+				<fk_column name="REQUEST_ID" pk="REQUEST_ID" />
+			</fk>
+		</table>
+		<table name="H_PARCEL" prior="A_PARCEL" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="CAD_NUM" type="VARCHAR" length="100" jt="12" />
+			<column name="TYPE_NAME" type="VARCHAR" length="100" jt="12" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_h_parcel" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+			</index>
+			<fk name="fk_h_parcel_l_parcel_person" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="L_PARCEL_PERSON" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_h_parcel_l_parcel_request" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="L_PARCEL_REQUEST" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_h_parcel_l_parcel_response" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="L_PARCEL_RESPONSE" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_h_parcel_s_parcel_estimate" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="S_PARCEL_ESTIMATE" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_h_parcel_s_parcel_info" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="S_PARCEL_INFO" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+		</table>
+		<table name="H_PERSON" prior="entity" >
+			<column name="PERSON_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="PERSON_FULL_NAME" type="VARCHAR" length="100" jt="12" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_h_person" unique="PRIMARY_KEY" >
+				<column name="PERSON_SK" />
+			</index>
+		</table>
+		<table name="H_REQUEST" prior="entity" >
+			<column name="REQUEST_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="REG_NUM" type="VARCHAR" length="100" jt="12" />
+			<column name="REQUEST_DATE" type="DATE" jt="91" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_h_request" unique="PRIMARY_KEY" >
+				<column name="REQUEST_SK" />
+			</index>
+		</table>
+		<table name="H_RESPONSE" prior="h_request_0" >
+			<column name="RESPONSE_SK" prior="REQUEST_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="REG_NUM" type="VARCHAR" length="100" jt="12" />
+			<column name="RESPONSE_DATE" type="DATE" jt="91" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_h_request_0" unique="PRIMARY_KEY" >
+				<column name="RESPONSE_SK" />
+			</index>
+		</table>
+		<table name="L_PARCEL_PERSON" prior="L_PARCEL_" >
+			<column name="PARCEL_SK" prior="PARCEL_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="PERSON_SK" prior="PERSON_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_l_parcel_person" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="PERSON_SK" />
+			</index>
+			<fk name="fk_l_parcel_person_h_person" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="H_PERSON" type="Identifying" >
+				<fk_column name="PERSON_SK" pk="PERSON_SK" />
+			</fk>
+		</table>
+		<table name="L_PARCEL_REQUEST" prior="L_PARCEL_" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="REQUEST_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_l_parcel_request" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="REQUEST_SK" />
+			</index>
+			<fk name="fk_l_parcel_request_h_request" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="H_REQUEST" type="Identifying" >
+				<fk_column name="REQUEST_SK" pk="REQUEST_SK" />
+			</fk>
+		</table>
+		<table name="L_PARCEL_RESPONSE" prior="L_PARCEL" >
+			<column name="PARCEL_SK" prior="PARCEL_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="RESPONSE_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_l_parcel_response" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="RESPONSE_SK" />
+			</index>
+			<fk name="fk_l_parcel_response_h_response" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="H_RESPONSE" type="Identifying" >
+				<fk_column name="RESPONSE_SK" pk="RESPONSE_SK" />
+			</fk>
+		</table>
+		<table name="PARCEL" prior="DIM_PARCEL" >
+			<column name="PARCEL_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="CAD_NUM" type="VARCHAR" length="10" jt="12" />
+			<column name="ADDRESS" type="VARCHAR" length="200" jt="12" />
+			<column name="CATEGORY" type="VARCHAR" length="100" jt="12" />
+			<column name="UTILIZATION" type="VARCHAR" length="200" jt="12" />
+			<column name="AREA" type="INT" jt="4" />
+			<column name="TYPE_CODE" prior="TYPE_ID" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<index name="pk_parcel_0" unique="PRIMARY_KEY" >
+				<column name="PARCEL_ID" />
+			</index>
+			<fk name="fk_dim_parcel_dim_response" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="DIM_RESPONSE" type="Identifying" >
+				<fk_column name="RESPONSE_ID" pk="RESPONSE_ID" />
+			</fk>
+			<fk name="fk_dim_parcel_dim_request" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="DIM_REQUEST" type="Identifying" >
+				<fk_column name="REQUEST_ID" pk="REQUEST_ID" />
+			</fk>
+			<fk name="fk_parcel_types" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="TYPES" type="Identifying" >
+				<fk_column name="TYPE_CODE" pk="TYPE_CODE" />
+			</fk>
+		</table>
+		<table name="PD_PERSON" prior="PD_RESPONSE" >
+			<column name="PERSON_SK" prior="RESPONSE_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="COUNT_RESPONSE" type="BIGINT" jt="-5" />
+			<column name="COUNT_PARCEL" type="BIGINT" jt="-5" />
+			<index name="pk_pd_response" unique="PRIMARY_KEY" >
+				<column name="PERSON_SK" />
+			</index>
+			<fk name="fk_pd_person_h_person" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="H_PERSON" type="Identifying" >
+				<fk_column name="PERSON_SK" pk="PERSON_SK" />
+			</fk>
+		</table>
+		<table name="PERSON" prior="PPERSON" >
+			<column name="PERSON_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="PERSON_FULL_NAME" prior="FULL_NAME" type="VARCHAR" length="200" jt="12" />
+			<column name="POST" type="VARCHAR" length="100" jt="12" />
+			<index name="pk_person" unique="PRIMARY_KEY" >
+				<column name="PERSON_ID" />
+			</index>
+		</table>
+		<table name="PIT_PARCEL" prior="PIT_" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="S_PARCEL_INFO_DT" prior="VALID_FROM_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="S_PARCEL_ESTIMATE_DT" prior="VALID_TO_DT" type="DATE" jt="91" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<index name="pk_pit_parcel" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+			</index>
+			<fk name="fk_pit_parcel_s_parcel_estimate" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="S_PARCEL_ESTIMATE" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_pit_parcel_s_parcel_info" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="S_PARCEL_INFO" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+		</table>
+		<table name="REPONSE" prior="entity" >
+			<column name="RESPONSE_ID" prior="ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="RESPONSE_REG_NUM" prior="RESPONSE_NUM" type="VARCHAR" length="100" jt="12" />
+			<column name="RESPONSE_DATE" prior="DATE" type="DATE" jt="91" />
+			<column name="PERSON_ID" type="INT" jt="4" />
+			<index name="pk_reponse" unique="PRIMARY_KEY" >
+				<column name="RESPONSE_ID" />
+			</index>
+			<fk name="fk_reponse_person" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="PERSON" type="Identifying" >
+				<fk_column name="PERSON_ID" pk="PERSON_ID" />
+			</fk>
+		</table>
+		<table name="REQUEST" prior="entity" >
+			<column name="REQUEST_ID" prior="ID_REQUEST" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="REQUEST_DATE" prior="REQUEST_DATE_IN" type="DATE" jt="91" />
+			<column name="REQUEST_REG_NUM" prior="REQUEST_NUM" type="VARCHAR" length="200" jt="12" />
+			<column name="DESCRIPTION" type="TEXT" jt="-1" />
+			<index name="pk_request" unique="PRIMARY_KEY" >
+				<column name="REQUEST_ID" />
+			</index>
+		</table>
+		<table name="REQUEST_FILE" prior="FILE" >
+			<column name="REQUEST_FILE_ID" prior="ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="FILE_NAME" type="VARCHAR" length="200" jt="12" />
+			<column name="TYPE" type="VARCHAR" length="100" jt="12" />
+			<column name="PATH" type="TEXT" length="300" jt="-1" />
+			<index name="pk_file" unique="PRIMARY_KEY" >
+				<column name="REQUEST_FILE_ID" />
+			</index>
+		</table>
+		<table name="REQUEST_FILES" prior="FILES" >
+			<column name="REQUEST_FILES_ID" prior="ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="REQUEST_ID" prior="ID_REQUEST" type="BIGINT" jt="-5" />
+			<column name="REQUEST_FILE_ID" prior="ID_FILE" type="BIGINT" jt="-5" />
+			<index name="pk_files" unique="PRIMARY_KEY" >
+				<column name="REQUEST_FILES_ID" />
+			</index>
+			<fk name="fk_files_request" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="REQUEST" type="Identifying" >
+				<fk_column name="REQUEST_ID" pk="REQUEST_ID" />
+			</fk>
+			<fk name="fk_request_files_response_file" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="REQUEST_FILE" type="Identifying" >
+				<fk_column name="REQUEST_FILE_ID" pk="REQUEST_FILE_ID" />
+			</fk>
+		</table>
+		<table name="REQUEST_FILE_PARCEL" prior="FILE_PARCEL" >
+			<column name="REQUEST_FILE_PARCEL_ID" prior="ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="REQUEST_FILE_ID" prior="FILE_ID" type="BIGINT" jt="-5" />
+			<column name="PARCEL_ID" prior="ID_PARCEL" type="BIGINT" length="10" jt="-5" />
+			<index name="pk_file_parcel" unique="PRIMARY_KEY" >
+				<column name="REQUEST_FILE_PARCEL_ID" />
+			</index>
+			<fk name="fk_file_parcel_file" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="REQUEST_FILE" type="Identifying" >
+				<fk_column name="REQUEST_FILE_ID" pk="REQUEST_FILE_ID" />
+			</fk>
+			<fk name="fk_request_file_parcel_parcel" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="PARCEL" type="Identifying" >
+				<fk_column name="PARCEL_ID" pk="PARCEL_ID" />
+			</fk>
+		</table>
+		<table name="RESPONSE_FILE" prior="request_file_0" >
+			<column name="RESPONSE_FILE_ID" prior="RESPONSE_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="FILE_NAME" type="VARCHAR" length="200" jt="12" />
+			<column name="TYPE" type="VARCHAR" length="100" jt="12" />
+			<column name="PATH" type="TEXT" length="300" jt="-1" />
+			<index name="pk_file_0" unique="PRIMARY_KEY" >
+				<column name="RESPONSE_FILE_ID" />
+			</index>
+		</table>
+		<table name="RESPONSE_FILES" prior="RESPONSE_" >
+			<column name="ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="RESPONSE_ID" type="BIGINT" jt="-5" />
+			<column name="RESPONSE_FILE_ID" prior="FILE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_response_files" unique="PRIMARY_KEY" >
+				<column name="ID" />
+			</index>
+			<fk name="fk_response_files_reponse" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="REPONSE" type="Identifying" >
+				<fk_column name="RESPONSE_ID" pk="RESPONSE_ID" />
+			</fk>
+			<fk name="fk_response_files" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="RESPONSE_FILE" type="Identifying" >
+				<fk_column name="RESPONSE_FILE_ID" pk="RESPONSE_FILE_ID" />
+			</fk>
+		</table>
+		<table name="RESPONSE_FILE_PARCEL" prior="request_file_parcel_0" >
+			<column name="RESPONSE_FILE_PARCEL_ID" prior="RESPONSE_ID" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="RESPONSE_FILE_ID" prior="FILE_ID" type="BIGINT" jt="-5" />
+			<column name="PARCEL_ID" prior="ID_PARCEL" type="BIGINT" length="10" jt="-5" />
+			<column name="COST_ID" type="BIGINT" jt="-5" />
+			<index name="pk_file_parcel_0" unique="PRIMARY_KEY" >
+				<column name="RESPONSE_FILE_PARCEL_ID" />
+			</index>
+			<fk name="fk_response_file_parcel" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="RESPONSE_FILE" type="Identifying" >
+				<fk_column name="RESPONSE_FILE_ID" pk="RESPONSE_FILE_ID" />
+			</fk>
+			<fk name="fk_response_file_parcel_cost" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="COST" type="Identifying" >
+				<fk_column name="COST_ID" pk="COST_ID" />
+			</fk>
+			<fk name="fk_response_file_parcel_parcel" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="PARCEL" type="NonIdentifyingOptional" >
+				<fk_column name="PARCEL_ID" pk="PARCEL_ID" />
+			</fk>
+		</table>
+		<table name="S_PARCEL_ESTIMATE" prior="PARCEL_ESTIMATE" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="VALID_FROM_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="VALID_TO_DT" type="DATE" jt="91" />
+			<column name="COST" prior="COST_SK" type="DECIMAL" length="10" decimal="2" jt="3" />
+			<column name="UPKS" type="DECIMAL" length="10" decimal="2" jt="3" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_s_parcel_estimate" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="VALID_FROM_DT" />
+			</index>
+		</table>
+		<table name="S_PARCEL_INFO" prior="S_PARCEL_IFO" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="VALID_FROM_DT" type="DATE" jt="91" mandatory="y" />
+			<column name="VALID_TO_DT" type="DATE" jt="91" />
+			<column name="CAD_NUM" type="VARCHAR" length="10" jt="12" />
+			<column name="ADDRESS" type="VARCHAR" length="200" jt="12" />
+			<column name="CATEGORY" type="VARCHAR" length="100" jt="12" />
+			<column name="UTILIZATION" type="VARCHAR" length="200" jt="12" />
+			<column name="AREA" type="INT" jt="4" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_s_parcel_ifo" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="VALID_FROM_DT" />
+			</index>
+		</table>
+		<table name="TYPES" prior="entity" >
+			<column name="TYPE_CODE" prior="TYPE_ID" type="VARCHAR" length="100" jt="12" mandatory="y" />
+			<column name="TYPE_NAME" prior="NAME" type="VARCHAR" length="100" jt="12" />
+			<index name="pk_types" unique="PRIMARY_KEY" >
+				<column name="TYPE_CODE" />
+			</index>
+		</table>
+		<table name="T_PARCEL_PERSON" prior="l_parcel_person_0" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="PERSON_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_l_parcel_person_0" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="PERSON_SK" />
+			</index>
+			<fk name="fk_l_parcel_person_h_person_0" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="H_PERSON" type="Identifying" >
+				<fk_column name="PERSON_SK" pk="PERSON_SK" />
+			</fk>
+			<fk name="fk_t_parcel_person_a_parcel" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="A_PARCEL" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_t_parcel_person_at_response_full_name" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="AT_RESPONSE_FULL_NAME" type="Identifying" >
+				<fk_column name="PERSON_SK" pk="PERSON_SK" />
+			</fk>
+		</table>
+		<table name="T_PARCEL_REQUEST" prior="l_parcel_request_0" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="REQUEST_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_l_parcel_request_0" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="REQUEST_SK" />
+			</index>
+			<fk name="fk_l_parcel_request_h_request_0" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="H_REQUEST" type="Identifying" >
+				<fk_column name="REQUEST_SK" pk="REQUEST_SK" />
+			</fk>
+			<fk name="fk_t_parcel_request_a_parcel" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="A_PARCEL" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_t_parcel_request_a_request" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="A_REQUEST" type="Identifying" >
+				<fk_column name="REQUEST_SK" pk="REQUEST_SK" />
+			</fk>
+		</table>
+		<table name="T_PERSON_RESPONSE" prior="l_parcel_response_0" >
+			<column name="PARCEL_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="RESPONSE_SK" type="BIGINT" jt="-5" mandatory="y" />
+			<column name="LOAD_DT" type="DATE" jt="91" />
+			<column name="SOURCE_ID" type="BIGINT" jt="-5" />
+			<index name="pk_l_parcel_response_0" unique="PRIMARY_KEY" >
+				<column name="PARCEL_SK" />
+				<column name="RESPONSE_SK" />
+			</index>
+			<fk name="fk_l_parcel_response_h_response_0" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="H_RESPONSE" type="Identifying" >
+				<fk_column name="RESPONSE_SK" pk="RESPONSE_SK" />
+			</fk>
+			<fk name="fk_t_person_response_a_parcel" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="A_PARCEL" type="Identifying" >
+				<fk_column name="PARCEL_SK" pk="PARCEL_SK" />
+			</fk>
+			<fk name="fk_t_person_response_a_response" virtual="y" to_schema="KC_DWH.INSTANCE" to_table="A_RESPONSE" type="Identifying" >
+				<fk_column name="RESPONSE_SK" pk="RESPONSE_SK" />
+			</fk>
+		</table>
+	</schema>
+	<connector name="MyDb" database="MySql" host="localhost" port="3306" user="root" useSystemProxy="false" />
+	<layout name="Anchor" id="Layout-22f" show_relation="columns" >
+		<entity schema="KC_DWH.INSTANCE" name="AT_COST" color="3986C1" x="432" y="704" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_PARCEL_ADDRESS" color="C1D8EE" x="448" y="64" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_PARCEL_AREA" color="C1D8EE" x="64" y="64" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_PARCEL_CAD_NUM" color="C1D8EE" x="240" y="64" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_PARCEL_CATEGORY" color="C1D8EE" x="192" y="704" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_PARCEL_TYPE_NAME" color="C1D8EE" x="48" y="272" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_PARCEL_UTILIZATION" color="C1D8EE" x="64" y="480" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_REQUEST_DATE" color="3986C1" x="912" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_REQUEST_REG_NUM" color="C1D8EE" x="704" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_RESPONSE_DATE" color="3986C1" x="1104" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_RESPONSE_FULL_NAME" color="C1D8EE" x="896" y="688" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_RESPONSE_REG_NUM" color="3986C1" x="1344" y="128" />
+		<entity schema="KC_DWH.INSTANCE" name="AT_UPKS" color="3986C1" x="592" y="208" />
+		<entity schema="KC_DWH.INSTANCE" name="A_PARCEL" color="C1D8EE" x="288" y="256" />
+		<entity schema="KC_DWH.INSTANCE" name="A_PERSON" color="C1D8EE" x="1168" y="688" />
+		<entity schema="KC_DWH.INSTANCE" name="A_REQUEST" color="C1D8EE" x="832" y="272" />
+		<entity schema="KC_DWH.INSTANCE" name="A_RESPONSE" color="3986C1" x="1104" y="272" />
+		<entity schema="KC_DWH.INSTANCE" name="T_PARCEL_PERSON" color="3986C1" x="688" y="688" />
+		<entity schema="KC_DWH.INSTANCE" name="T_PARCEL_REQUEST" color="3986C1" x="656" y="384" />
+		<entity schema="KC_DWH.INSTANCE" name="T_PERSON_RESPONSE" color="3986C1" x="1104" y="464" />
+	</layout>
+	<layout name="Data Vault 2.0" id="Layout-1dc6" show_relation="columns" >
+		<entity schema="KC_DWH.INSTANCE" name="H_PARCEL" color="C1D8EE" x="336" y="544" />
+		<entity schema="KC_DWH.INSTANCE" name="H_PERSON" color="C1D8EE" x="272" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="H_REQUEST" color="C1D8EE" x="64" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="H_RESPONSE" color="3986C1" x="800" y="304" />
+		<entity schema="KC_DWH.INSTANCE" name="L_PARCEL_PERSON" color="C1D8EE" x="272" y="288" />
+		<entity schema="KC_DWH.INSTANCE" name="L_PARCEL_REQUEST" color="C1D8EE" x="64" y="288" />
+		<entity schema="KC_DWH.INSTANCE" name="L_PARCEL_RESPONSE" color="C1D8EE" x="512" y="336" />
+		<entity schema="KC_DWH.INSTANCE" name="PD_PERSON" color="C1D8EE" x="640" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="PIT_PARCEL" color="C1D8EE" x="336" y="800" />
+		<entity schema="KC_DWH.INSTANCE" name="S_PARCEL_ESTIMATE" color="C1D8EE" x="576" y="560" />
+		<entity schema="KC_DWH.INSTANCE" name="S_PARCEL_INFO" color="C1D8EE" x="48" y="576" />
+	</layout>
+	<layout name="Default Layout" id="Layout-16b1" show_relation="columns" >
+		<entity schema="KC_DWH.INSTANCE" name="COST" color="C1D8EE" x="912" y="240" />
+		<entity schema="KC_DWH.INSTANCE" name="PARCEL" color="3986C1" x="560" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="PERSON" color="C1D8EE" x="1360" y="64" />
+		<entity schema="KC_DWH.INSTANCE" name="REPONSE" color="C1D8EE" x="1088" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="REQUEST" color="C1D8EE" x="48" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="REQUEST_FILE" color="C1D8EE" x="368" y="288" />
+		<entity schema="KC_DWH.INSTANCE" name="REQUEST_FILES" color="C1D8EE" x="80" y="288" />
+		<entity schema="KC_DWH.INSTANCE" name="REQUEST_FILE_PARCEL" color="C1D8EE" x="240" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="RESPONSE_FILE" color="3986C1" x="720" y="384" />
+		<entity schema="KC_DWH.INSTANCE" name="RESPONSE_FILES" color="C1D8EE" x="1008" y="416" />
+		<entity schema="KC_DWH.INSTANCE" name="RESPONSE_FILE_PARCEL" color="3986C1" x="784" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="TYPES" color="C1D8EE" x="560" y="320" />
+	</layout>
+	<layout name="Многомерное моделирование" id="Layout-1355" show_relation="columns" >
+		<entity schema="KC_DWH.INSTANCE" name="DIM_PERSON" color="3986C1" x="528" y="384" />
+		<entity schema="KC_DWH.INSTANCE" name="DIM_REQUEST" color="3986C1" x="48" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="DIM_RESPONSE" color="C1D8EE" x="480" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="DIM_TYPES" color="3986C1" x="592" y="256" />
+		<entity schema="KC_DWH.INSTANCE" name="DM_ESTIMATE" color="C1D8EE" x="784" y="48" />
+		<entity schema="KC_DWH.INSTANCE" name="FCT_ESTIMATE" color="C1D8EE" x="304" y="192" />
+		<entity schema="KC_DWH.INSTANCE" name="PARCEL" color="3986C1" x="64" y="432" />
+	</layout>
+</project>
